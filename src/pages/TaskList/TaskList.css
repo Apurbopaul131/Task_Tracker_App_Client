@@ -1,0 +1,8 @@
+.view-task-container {
+  margin: 20px;
+}
+.loading-spinner {
+  text-align: center;
+  font-size: 30px;
+  color: #4f46e5;
+}

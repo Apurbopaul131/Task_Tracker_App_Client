@@ -1,14 +1,19 @@
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 const Navbar = () => {
   return (
     <div className="task-container ">
       <div className="task-title">
-        <h3>TaskTracker</h3>
+        <Link to={"/"}><h3>TaskTracker</h3></Link>
       </div>
 
       <ul className="task-list">
-        <li>Add Task</li>
-        <li>Task</li>
+        <Link to={"/"}><li>
+          Home
+        </li></Link>
+        <Link to={"/task-list"}><li>
+          Task List
+        </li></Link>
       </ul>
     </div>
   );

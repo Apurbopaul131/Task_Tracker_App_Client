@@ -1,5 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
+import AddTask from "../pages/AddTask/AddTask";
+import TaskList from "../pages/TaskList";
+
 
 export const router = createBrowserRouter([
   {
@@ -9,11 +12,11 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Welcome to the Event Management Application</div>,
+        element: <AddTask/>,
       },
       {
-        path:"update",
-        element: <div>update document</div>
+        path:"task-list",
+        element: <TaskList/>
       }
     ],
   },

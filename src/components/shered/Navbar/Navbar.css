@@ -14,6 +14,9 @@
   display: flex;
   gap: 20px;
 }
+.task-list a {
+  text-decoration: none;
+}
 .task-list li {
   list-style-type: none;
   cursor: pointer;
