@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="root">
       <Navbar/>
-      <Outlet/>
+      
+        <Outlet/>
+      
     </div>
   );
 }

@@ -58,6 +58,7 @@ const TaskForm = ({ mode,defaultTask, onSucess }) => {
         
       if(isEdit){
          const res = await dispatch(updateTask({ _id:defaultTask?._id, ...data })).unwrap();
+         console.log(res);
          toast.success(res?.message, {id:toastId,position:"top-center",style:{
             color:"green"
          }})

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./TaskCard.css";
 const TaskCard = ({ task, handleTaskDelete }) => {
   return (
@@ -21,7 +22,7 @@ const TaskCard = ({ task, handleTaskDelete }) => {
         >
           Delete
         </button>
-        <button className="btn edit">Edit</button>
+        <Link to={`/update/${task?._id}`}><button className="btn edit">Edit</button></Link>
       </div>
     </div>
   );

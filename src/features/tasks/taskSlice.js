@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addTask, deleteTask, fetchTasks, updateTask } from "./taskThunks";
+import {
+  addTask,
+  deleteTask,
+  fetchTask,
+  fetchTasks,
+  updateTask,
+} from "./taskThunks";
 
 const taskSlice = createSlice({
   name: "tasks",
@@ -14,7 +20,7 @@ const taskSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      // FETCH
+      // Fetch All Task
       .addCase(fetchTasks.pending, (state) => {
         state.loading = true;
       })
@@ -26,12 +32,26 @@ const taskSlice = createSlice({
         state.statusCode = statusCode;
       })
       .addCase(fetchTasks.rejected, (state, action) => {
-        console.log(action);
         state.loading = false;
         state.error = action.error.message;
         state.statusCode = 404;
       })
 
+      //Fetch single Task
+      .addCase(fetchTask.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchTask.fulfilled, (state, action) => {
+        const { data, message, statusCode } = action.payload;
+        state.list = data;
+        (state.message = message), (state.statusCode = statusCode);
+        state.loading = false;
+      })
+      .addCase(fetchTask.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+        state.statusCode = 404;
+      })
       // ADD
       .addCase(addTask.fulfilled, (state, action) => {
         const { data, message, statusCode } = action.payload;
@@ -42,8 +62,12 @@ const taskSlice = createSlice({
 
       // UPDATE
       .addCase(updateTask.fulfilled, (state, action) => {
-        const idx = state.list.findIndex((t) => t._id === action.payload._id);
-        if (idx !== -1) state.list[idx] = action.payload;
+        console.log(action.payload);
+        state.list = action.payload.data;
+        state.message = action.payload.message;
+        state.statusCode = action.payload.statusCode;
+        // const idx = state.list.findIndex((t) => t._id === action.payload._id);
+        // if (idx !== -1) state.list[idx] = action.payload;
       })
 
       // DELETE

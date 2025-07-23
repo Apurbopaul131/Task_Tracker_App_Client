@@ -9,6 +9,11 @@ export const fetchTasks = createAsyncThunk("task/fetchTasks", async () => {
   return res?.data;
 });
 
+// Fetch single task
+export const fetchTask = createAsyncThunk("task/fetchTask", async (id) => {
+  const res = await axios.get(`${BASE_URL}/${id}`);
+  return res?.data;
+});
 // Add a new task
 export const addTask = createAsyncThunk("task/addTask", async (task) => {
   const res = await axios.post(BASE_URL, task);
