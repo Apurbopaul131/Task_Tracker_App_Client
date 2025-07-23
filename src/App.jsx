@@ -5,10 +5,9 @@ import Navbar from "./components/shered/Navbar";
 function App() {
   return (
     <div className="root">
-      <Navbar/>
-      
-        <Outlet/>
-      
+      <Navbar />
+
+      <Outlet />
     </div>
   );
 }
